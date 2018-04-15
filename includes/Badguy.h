@@ -1,0 +1,33 @@
+//Matthew Barnard
+#ifndef BADGUY_H
+#define BADGUY_H
+#include <vector>
+#include "Image.h"
+#include "Includes.h"
+#include "Rect.h"
+#include "Surface.h"
+#include "Event.h"
+#include <iostream>
+
+class Badguy
+{
+private:
+  int x_, y_;
+  Rect myrect;
+  Image & image_;
+  Surface & surface_;
+  int speed;
+
+public:
+  Badguy(int x, int y, Surface & surface, Image & Badguyimage_a)
+:x_(x), y_(y), surface_(surface), image_(Badguyimage_a), speed(speed)
+{
+  myrect = Badguyimage_a.getRect();
+  myrect.x = x_;
+  myrect.y = y_;
+}
+bool move(int speed);
+void draw();
+};
+
+#endif
