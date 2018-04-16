@@ -8,17 +8,6 @@
 #include "Fleet.h"
 #include <iostream>
 
-bool Badguy::move(int speed, bool direction)
-{
-    bool piece = false;
-    myrect.x += speed;
-    if (myrect.x > 1910 || myrect.x < 10)
-    {
-      piece = true;
-    }
-    return piece;
-}
-
 void Badguy::draw()
 {
   surface_.put_image(image_, myrect);

@@ -22,7 +22,7 @@ private:
   int speed_;
 
 public:
-  Fleet(Surface & surface, Image & Badguyimage_a, int NUM_BAD_GUYS)
+  Fleet(Surface & surface, Image & Badguyimage_a, int NUM_BAD_GUYS, int W, int H)
 :NUM_BAD_GUYS(NUM_BAD_GUYS), surface_(surface), image_(Badguyimage_a)
   {
     int x = 30, y = 0;

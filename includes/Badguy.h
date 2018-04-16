@@ -26,8 +26,8 @@ public:
   myrect.x = x_;
   myrect.y = y_;
 }
-bool move(int speed);
 void draw();
+
 };
 
 #endif

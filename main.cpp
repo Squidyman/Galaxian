@@ -15,7 +15,14 @@
 #include "Ship.h"
 #include "Fleet.h"
 #include "Badguy.h"
+#include "FallingStars.h"
 const int NUM_BAD_GUYS = 30;
+
+/*
+git add . #adds all of the files
+git commit -m "add your commit message here" #adds the files into a bundle
+git push origin master #pushes the code up to github.com
+*/
 
 void Game()
 {
@@ -26,8 +33,10 @@ void Game()
 	Image Badguyimage_b = "images/galaxian/GalaxianRedAlien.gif";
 	Image Badguyimage_c = "images/galaxian/GalaxianPurpleAlien.gif";
 
+
 	Ship Player (W / 2 - 60, H / 2 + 360, surface, SpaceShuttle, W, H);
-	Fleet A (surface, Badguyimage_a, NUM_BAD_GUYS);
+	Fleet A (surface, Badguyimage_a, NUM_BAD_GUYS, W, H);
+	FallingStars Stars (surface, W, H);
 
 	Rect PlayerObject = SpaceShuttle.getRect();
 
@@ -46,13 +55,17 @@ void Game()
 			moveRight = true;
 			Player.move(moveLeft, moveRight);
 		}
-
 		A.move();//idk why here
+
+
 		surface.lock();
 		surface.fill(BLACK);
+
+		Stars.move();
+		Stars.draw();
+
 		Player.draw();
 		A.draw();
-
 		surface.unlock();
 		surface.flip();
 		delay(10);
