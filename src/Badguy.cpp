@@ -8,10 +8,26 @@
 #include "Fleet.h"
 #include <iostream>
 
+
+void Badguy::dive(int x, int y)
+{
+  myrect.y = y;
+  myrect.x = x;
+}
+
+void Badguy::move()
+{
+    myrect.x += Fleet::speed;
+}
+
 void Badguy::draw()
 {
   surface_.put_image(image_, myrect);
 }
+
+int Badguy::get_x()
+{return myrect.x;}
+
 
 /*
 control

@@ -16,18 +16,21 @@ private:
   Rect myrect;
   Image & image_;
   Surface & surface_;
-  int speed;
+  bool if_dive = false;
+  bool if_move_left_right = true;
 
 public:
   Badguy(int x, int y, Surface & surface, Image & Badguyimage_a)
-:x_(x), y_(y), surface_(surface), image_(Badguyimage_a), speed(speed)
+:x_(x), y_(y), surface_(surface), image_(Badguyimage_a)
 {
   myrect = Badguyimage_a.getRect();
   myrect.x = x_;
   myrect.y = y_;
 }
+int get_x();
+void dive(int, int);
+void move();
 void draw();
-
 };
 
 #endif

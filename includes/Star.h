@@ -16,10 +16,9 @@ public:
   Star(int x, int y, Surface & surface, int w, int h)
   :x_(x), y_(y), w_(w), h_(h), surface_(surface)
   {
-
   }
-  int get_y();
-  void set_y(int y);
+int get_y();
+void set_y(int y);
 void move();
 void draw();
 };

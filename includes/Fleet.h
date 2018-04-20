@@ -19,13 +19,13 @@ private:
   Rect myrect;
   Image & image_;
   Surface & surface_;
-  int speed_;
+  int SPEED_;
 
 public:
   Fleet(Surface & surface, Image & Badguyimage_a, int NUM_BAD_GUYS, int W, int H)
-:NUM_BAD_GUYS(NUM_BAD_GUYS), surface_(surface), image_(Badguyimage_a)
+:NUM_BAD_GUYS(NUM_BAD_GUYS), surface_(surface), image_(Badguyimage_a), W(W), H(H)
   {
-    int x = 30, y = 0;
+    int x = 30, y = 20;
     for (int i = 0; i < NUM_BAD_GUYS; ++i)
     {
     	Badguy a (x, y, surface, Badguyimage_a);
@@ -33,8 +33,15 @@ public:
     	x+=30;
     }
   }
+  static int speed;
+  void decision();
+  void dive(int, int, int);
   void move();
   void draw();
+  //void suicide();
+  //A.go_back_to_fleet();
+  //A.die();
+
 };
 
 #endif

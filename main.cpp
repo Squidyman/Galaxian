@@ -16,7 +16,10 @@
 #include "Fleet.h"
 #include "Badguy.h"
 #include "FallingStars.h"
+#include "Lasers.h"
+#include "Shot.h"
 const int NUM_BAD_GUYS = 30;
+const int STARS = 1000;
 
 /*
 git add . #adds all of the files
@@ -33,17 +36,24 @@ void Game()
 	Image Badguyimage_b = "images/galaxian/GalaxianRedAlien.gif";
 	Image Badguyimage_c = "images/galaxian/GalaxianPurpleAlien.gif";
 
+	int shot = 0;
+
 
 	Ship Player (W / 2 - 60, H / 2 + 360, surface, SpaceShuttle, W, H);
-	Fleet A (surface, Badguyimage_a, NUM_BAD_GUYS, W, H);
-	FallingStars Stars (surface, W, H);
+	Fleet Badguy_ships (surface, Badguyimage_a, NUM_BAD_GUYS, W, H);
+	FallingStars Stars (surface, W, H, STARS);
+	Lasers laser (surface, W, H, shot);
 
 	Rect PlayerObject = SpaceShuttle.getRect();
-
+	int count = 0;
+	int firingtime = -1;
+	int firingtime_step = 1000;
 
 	while (1)
 	{
 		if (event.poll() && event.type() == QUIT) break;
+		surface.lock();
+		surface.fill(BLACK);
 
 		KeyPressed keypressed = get_keypressed();
 		bool moveLeft = 0, moveRight = 0;
@@ -55,20 +65,31 @@ void Game()
 			moveRight = true;
 			Player.move(moveLeft, moveRight);
 		}
-		A.move();//idk why here
 
+		if (keypressed[SPACE])
+			{
+			int current_time = getTicks();
+			if (current_time - firingtime > firingtime_step)
+				{
+					firingtime = current_time;
 
-		surface.lock();
-		surface.fill(BLACK);
+					laser.create(Player.get_x(), shot);
+					++shot;
+					if (shot > 99)
+						shot = 0;
+				}
+			}
 
+		laser.draw();
 		Stars.move();
 		Stars.draw();
-
 		Player.draw();
-		A.draw();
+		Badguy_ships.decision();
+		Badguy_ships.draw();
+
 		surface.unlock();
 		surface.flip();
-		delay(10);
+		//delay(5); // this seems to be unnecessary on my computer, only adds lag
 	}
 	return;
 }

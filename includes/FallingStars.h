@@ -14,13 +14,14 @@ private:
   std::vector<Star> stars;
   int W, H;
   Surface & surface_;
+  int STARS;
 
 
 public:
-  FallingStars(Surface & surface, int W, int H)
-  :surface_(surface), W(W), H(H)
+  FallingStars(Surface & surface, int W, int H, int STARS)
+  :surface_(surface), W(W), H(H), STARS(STARS)
   {
-    for (int i = 0; i < 3000; ++i)
+    for (int i = 0; i < STARS; ++i)
     {
       int x = rand() % (W - 1);
       int y = rand() % (H - 1);

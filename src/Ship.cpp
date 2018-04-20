@@ -6,6 +6,16 @@
 #include "Image.h"
 #include <iostream>
 
+int Ship::get_y()
+{
+  return (myrect.y);
+}
+
+int Ship::get_x()
+{
+  return (myrect.x);
+}
+
 void Ship::move(bool moveLeft, bool moveRight)
 {
   int dx = speed;
