@@ -25,18 +25,17 @@ public:
   Fleet(Surface & surface, Image & Badguyimage_a, int NUM_BAD_GUYS, int W, int H)
 :NUM_BAD_GUYS(NUM_BAD_GUYS), surface_(surface), image_(Badguyimage_a), W(W), H(H)
   {
-    int x = 30, y = 20;
+    int x = 30, y = 150;
     for (int i = 0; i < NUM_BAD_GUYS; ++i)
     {
     	Badguy a (x, y, surface, Badguyimage_a);
     	badguy.push_back(a);
-    	x+=30;
+    	x+=120;
     }
   }
   static int speed;
-  void decision();
-  void dive(int, int, int);
-  void move();
+  void move(int laser_size);
+  int get_size();
   void draw();
   //void suicide();
   //A.go_back_to_fleet();

@@ -28,9 +28,12 @@ public:
   myrect.y = y_;
 }
 int get_x();
-void dive(int, int);
-void move();
+int get_y();
+int get_w();
+int get_h();
+void move(bool, bool);
 void draw();
+//void draw_DeathStar();
 };
 
 #endif

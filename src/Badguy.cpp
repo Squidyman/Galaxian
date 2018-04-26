@@ -9,15 +9,16 @@
 #include <iostream>
 
 
-void Badguy::dive(int x, int y)
+void Badguy::move(bool moveLeftRight, bool dive)
 {
-  myrect.y = y;
-  myrect.x = x;
-}
-
-void Badguy::move()
-{
+  if (moveLeftRight == true)
+  {
     myrect.x += Fleet::speed;
+  }
+  if (dive == true)
+  {
+    --myrect.y;
+  }
 }
 
 void Badguy::draw()
@@ -25,8 +26,10 @@ void Badguy::draw()
   surface_.put_image(image_, myrect);
 }
 
-int Badguy::get_x()
-{return myrect.x;}
+int Badguy::get_x() {return myrect.x;}
+int Badguy::get_y() {return myrect.y;}
+int Badguy::get_w() {return myrect.w;}
+int Badguy::get_h() {return myrect.h;}
 
 
 /*

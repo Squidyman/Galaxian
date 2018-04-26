@@ -26,7 +26,7 @@ public:
     myrect.x = x_;
     myrect.y = y_;
   }
-  
+
   int get_x();
   int get_y();
   void move(bool moveLeft, bool moveRight);

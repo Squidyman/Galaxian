@@ -11,21 +11,25 @@ class Lasers
 {
 private:
   Surface & surface_;
-  int W, H, shot_;
+  int W, H;
   std::vector<Shot> laser_array;
 public:
-  Lasers(Surface & surface, int W, int H, int shot)
-  :surface_(surface), W(W), H(H), shot_(shot)
+  Lasers(Surface & surface, int W, int H)
+  :surface_(surface), W(W), H(H)
   {
     int x = 0, y = -20;
-    for (int i = 0; i < 100; ++i)
+    for (int i = 0; i < 30; ++i)
     {
-      Shot player_shot (x, y, surface);
+      bool type = false;
+      Shot player_shot (x, y, surface, type);
       laser_array.push_back(player_shot);
     }
   }
-void create(int x, int shot);
+static int shot_number;
+void create(int, int);
 void draw();
+int get_size();
+
 };
 
 /*
